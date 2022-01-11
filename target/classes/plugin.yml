@@ -1,0 +1,7 @@
+name: Simple Scoreboard
+version: '1.0'
+main: eu.ncodes.minecraft.simplescoreboard.SimpleScoreboard
+prefix: SimpleScoreboard
+authors: [ nCodes ]
+description: Simple scoreboard plugin
+website: https://ncodes.eu

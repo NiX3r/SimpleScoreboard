@@ -9,8 +9,5 @@
         <module name="SimpleScoreBoard" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="SimpleScoreBoard" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
