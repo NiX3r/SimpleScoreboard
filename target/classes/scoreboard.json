@@ -1,0 +1,18 @@
+{
+  "title": "&4&lyour_topic",
+  "interval": 50,
+  "lines": [
+    {
+      "score": 3,
+      "text": "&7first line"
+    },
+    {
+      "score": 2,
+      "text": "&7second line"
+    },
+    {
+      "score": 1,
+      "text": "&7third line"
+    }
+  ]
+}

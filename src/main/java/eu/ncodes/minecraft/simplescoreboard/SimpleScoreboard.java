@@ -6,26 +6,58 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.DisplaySlot;
 
+import java.io.IOException;
+
 public final class SimpleScoreboard extends JavaPlugin {
 
     @Override
     public void onEnable() {
 
         // Initialize plugin
+        getLogger().info("Initializing plugin...");
+        this.getDataFolder().mkdirs();
         PluginUtils.plugin = this;
         PluginUtils.manager = Bukkit.getScoreboardManager();
         PluginUtils.board = PluginUtils.manager.getNewScoreboard();
-        PluginUtils.objective = PluginUtils.board.registerNewObjective("test", "test2");
-
-        // Initialize scoreboard
-        PluginUtils.objective.setDisplaySlot(DisplaySlot.SIDEBAR);
-        PluginUtils.objective.setDisplayName("Just a test");
-        PluginUtils.objective.getScore("hello").setScore(0);
+        PluginUtils.objective = PluginUtils.board.registerNewObjective("simplescoreboard", "simplescoreboard");
 
         // Initialize listeners
+        getLogger().info("Initializing listeners...");
         getServer().getPluginManager().registerEvents(new OnPlayerJoin(), this);
 
-        getLogger().info("[SimpleScoreboard] Successfully loaded");
+        // Initialize scoreboard json
+        getLogger().info("Initializing files...");
+        PluginUtils.createFileDefaults( createError -> {
+
+            if(createError == null){
+
+                PluginUtils.loadFileDefaults( cache -> {
+
+                    if(cache == null){
+
+                        getLogger().warning("Can't load 'scoreboard.json' file. Please try again later! Turning plugin off...");
+                        Bukkit.getPluginManager().disablePlugin(this);
+
+                    } else{
+
+                        PluginUtils.loadDataToCache(cache, loadError -> {
+
+                            if(loadError == null){
+                                getLogger().info("Initializing completed. Data load in cache. Plugin is ready to use");
+                            } else {
+                                getLogger().warning("Can't load data into cache. Turning plugin off...");
+                                Bukkit.getPluginManager().disablePlugin(this);
+                            }
+
+                        });
+
+                    }
+
+                });
+
+            }
+
+        });
 
     }
 

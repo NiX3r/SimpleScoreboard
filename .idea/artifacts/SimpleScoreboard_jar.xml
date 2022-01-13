@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SimpleScoreboard:jar">
+    <output-path>M:/Servers/Local/1-12-2/plugins</output-path>
+    <root id="archive" name="SimpleScoreBoard.jar">
+      <element id="module-output" name="SimpleScoreBoard" />
+    </root>
+  </artifact>
+</component>

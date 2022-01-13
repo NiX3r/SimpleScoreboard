@@ -1,4 +1,4 @@
-name: Simple Scoreboard
+name: SimpleScoreboard
 version: '${project.version}'
 main: eu.ncodes.minecraft.simplescoreboard.SimpleScoreboard
 prefix: SimpleScoreboard
