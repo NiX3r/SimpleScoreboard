@@ -12,7 +12,7 @@ public class OnPlayerJoin implements Listener {
     @EventHandler
     public void On(PlayerJoinEvent event){
 
-        event.getPlayer().setScoreboard(PluginUtils.board);
+        //event.getPlayer().setScoreboard(PluginUtils.board);
 
     }
 

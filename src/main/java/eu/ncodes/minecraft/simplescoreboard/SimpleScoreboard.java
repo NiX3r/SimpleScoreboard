@@ -19,7 +19,7 @@ public final class SimpleScoreboard extends JavaPlugin {
         PluginUtils.plugin = this;
         PluginUtils.manager = Bukkit.getScoreboardManager();
         PluginUtils.board = PluginUtils.manager.getNewScoreboard();
-        PluginUtils.objective = PluginUtils.board.registerNewObjective("simplescoreboard", "simplescoreboard");
+        PluginUtils.objective = PluginUtils.board.registerNewObjective("ss-§template", "ss-§template");
 
         // Initialize listeners
         getLogger().info("Initializing listeners...");

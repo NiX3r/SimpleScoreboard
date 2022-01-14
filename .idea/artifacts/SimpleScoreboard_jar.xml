@@ -3,6 +3,8 @@
     <output-path>M:/Servers/Local/1-12-2/plugins</output-path>
     <root id="archive" name="SimpleScoreBoard.jar">
       <element id="module-output" name="SimpleScoreBoard" />
+      <element id="module-output" name="SimpleScoreboard" />
+      <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.8.6" />
     </root>
   </artifact>
 </component>

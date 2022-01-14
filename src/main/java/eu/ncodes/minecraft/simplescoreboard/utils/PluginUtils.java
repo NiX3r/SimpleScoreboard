@@ -5,6 +5,7 @@ import eu.ncodes.minecraft.simplescoreboard.instances.nLines;
 import eu.ncodes.minecraft.simplescoreboard.instances.nScoreboard;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
@@ -16,6 +17,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Scanner;
 import java.util.function.Consumer;
 
@@ -25,6 +27,7 @@ public class PluginUtils {
     public static ScoreboardManager manager;
     public static Scoreboard board;
     public static Objective objective;
+    public static List<nLines> lines;
     public static int interval;
 
     public static void createFileDefaults(Consumer<Exception> callback){
@@ -78,16 +81,11 @@ public class PluginUtils {
     public static void loadDataToCache(nScoreboard cache, Consumer<Exception> callback){
 
         try{
+
             objective.setDisplaySlot(DisplaySlot.SIDEBAR);
-            objective.setDisplayName(formatMessage(cache.title));
+            objective.setDisplayName(cache.title);
             interval = cache.interval;
-
-            for(nLines line : cache.lines){
-
-                line.text = formatMessage(line.text);
-                objective.getScore(line.text).setScore(line.score);
-
-            }
+            lines = cache.lines;
 
             callback.accept(null);
         }
@@ -99,7 +97,7 @@ public class PluginUtils {
     }
 
     // TODO - Implement PlaceholderAPI formatting
-    public static String formatMessage(String message){
+    public static String formatMessage(String message, Player player){
         String output = message;
 
         output = ChatColor.translateAlternateColorCodes('&', output);
