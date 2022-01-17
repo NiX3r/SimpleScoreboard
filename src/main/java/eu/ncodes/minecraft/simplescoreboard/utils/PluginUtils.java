@@ -3,6 +3,7 @@ package eu.ncodes.minecraft.simplescoreboard.utils;
 import com.google.gson.Gson;
 import eu.ncodes.minecraft.simplescoreboard.instances.nLines;
 import eu.ncodes.minecraft.simplescoreboard.instances.nScoreboard;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -100,6 +101,7 @@ public class PluginUtils {
     public static String formatMessage(String message, Player player){
         String output = message;
 
+        output = PlaceholderAPI.setPlaceholders(player, output);
         output = ChatColor.translateAlternateColorCodes('&', output);
 
         return output;

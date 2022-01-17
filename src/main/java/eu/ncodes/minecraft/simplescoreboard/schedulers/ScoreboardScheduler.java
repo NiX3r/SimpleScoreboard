@@ -23,6 +23,10 @@ public class ScoreboardScheduler implements Runnable{
             Scoreboard scoreboard = PluginUtils.board;
             Objective objective = PluginUtils.objective;
 
+            objective.setDisplayName(PluginUtils.formatMessage(objective.getDisplayName(), player));
+
+            player.getScoreboard().getEntries().forEach( entry -> { player.getScoreboard().resetScores(entry); });
+
             for(nLines line : PluginUtils.lines){
                 objective.getScore(PluginUtils.formatMessage(line.text, player)).setScore(line.score);
             }
